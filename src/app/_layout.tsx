@@ -4,7 +4,10 @@ import { Stack } from 'expo-router'
 
 const RootLayout = () => {
   return (
-    <Stack/>
+    <Stack>
+      <Stack.Screen name='(auth)/login' options={{headerShown:false}}/>
+      <Stack.Screen name='(auth)/register' options={{headerShown:false}}/>
+    </Stack>
   ) 
 }
 

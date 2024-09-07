@@ -6,16 +6,16 @@ import { FIREBASE_AUTH } from '../../config/firebaseConfig';
 
 const register = () => {
 
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("ahjayalath1@gmail.com");
+  const [username, setUsername] = useState("thilina");
+  const [password, setPassword] = useState("12345678");
   const [loarding, setLoarding] = useState(false);
 
   const handleRegistration = async () => {
     try {
       setLoarding(true);
-      await createUserWithEmailAndPassword(FIREBASE_AUTH, email, password);
-      console.log("Login in");
+      const user = await createUserWithEmailAndPassword(FIREBASE_AUTH, email, password);
+      console.log(user);
     }
     catch (error) {
       console.log("There was an error occurred:" + error);

@@ -1,13 +1,35 @@
 import { View, Text, StyleSheet, TextInput, Pressable, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { router } from 'expo-router';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { FIREBASE_AUTH } from '../../config/firebaseConfig';
 
 const login = () => {
+
+  const [email, setEmail] = useState("ahjayalath1@gmail.com");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("12345678");
+  const [loarding, setLoarding] = useState(false);
+
+  const handleLogin = async () => {
+    try {
+      setLoarding(true);
+      const user = await signInWithEmailAndPassword(FIREBASE_AUTH,email,password);
+      console.log(user);
+    }
+    catch (error) {
+      console.log("Can't login in" + error);
+    }
+    finally {
+      setLoarding(false);
+    }
+  }
+
   return (
     <View style={styles.container}>
 
       <View>
-        <Text style={{ fontSize: 20, textAlign: 'center' }}>"Welcome back to <Text style={{ fontWeight: '500' }}>Send-it"</Text></Text>
+        <Text style={{ fontSize: 20, textAlign: 'center' }}>"Welcome back to <Text style={{ fontWeight: '500' }}>Chat-Now"</Text></Text>
         <View>
           <Image source={require("../../../assets/chat.png")}
             style={{
@@ -19,19 +41,30 @@ const login = () => {
 
         <View style={{ gap: 15 }}>
           <View style={styles.inputContainer}>
-            <Text style={styles.text}>Username</Text>
-            <TextInput style={styles.input} placeholder='Username'></TextInput>
+            <Text style={styles.text}>Email</Text>
+            <TextInput style={styles.input} placeholder='Email' value={email} onChangeText={setEmail}></TextInput>
           </View>
 
           <View style={styles.inputContainer}>
             <Text style={styles.text}>Password</Text>
-            <TextInput style={styles.input} placeholder='Password'></TextInput>
+            <TextInput style={styles.input} placeholder='Password' value={password} onChangeText={setPassword}></TextInput>
           </View>
         </View>
 
-        <Pressable style={styles.loginBtn}>
-          <Text style={{ color: "white", textAlign: 'center',fontWeight:'600' }}>Login</Text>
-        </Pressable>
+        {
+          loarding ?
+            (
+              <Pressable style={styles.loginBtn}>
+                <Text style={{ color: "white", textAlign: 'center', fontWeight: '600' }}>Loading...</Text>
+              </Pressable>
+            )
+            /*<ActivityIndicator/>*/
+            :
+            (<Pressable style={styles.loginBtn} onPress={() => handleLogin()}>
+              <Text style={{ color: "white", textAlign: 'center', fontWeight: '600' }}>Login</Text>
+            </Pressable>)
+        }
+
       </View>
 
       <View>

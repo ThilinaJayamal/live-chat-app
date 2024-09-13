@@ -44,15 +44,16 @@ const TabLayout = () => {
       },
     }}>
 
-      <Tabs.Screen name='index' options={{
-        title: "Chat Groups",
+      <Tabs.Screen name='(groups)' options={{
         tabBarLabel: "Chats",
+        headerShown:false,
         tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />
       }} />
 
       <Tabs.Screen name='profile' options={{
         title: "My Profile",
         tabBarLabel: "My Profile",
+        headerShown:true,
         tabBarIcon: ({ color, size }) => <Ionicons name="person" size={size} color={color} />
       }} />
 

@@ -1,8 +1,9 @@
 import { View, Text, StyleSheet, TextInput, Pressable, Image, ActivityIndicator } from 'react-native'
 import React, { useState } from 'react'
 import { router } from 'expo-router';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { FIREBASE_AUTH } from '../../config/firebaseConfig';
+import { createUserWithEmailAndPassword, UserCredential } from 'firebase/auth';
+import { FIREBASE_AUTH, FIRESTORE_DB } from '../../config/firebaseConfig';
+import { doc, setDoc } from 'firebase/firestore';
 
 const register = () => {
 
@@ -15,13 +16,25 @@ const register = () => {
     try {
       setLoarding(true);
       const user = await createUserWithEmailAndPassword(FIREBASE_AUTH, email, password);
-      console.log(user);
+      await createUserInfor(user);
     }
     catch (error) {
       console.log("There was an error occurred:" + error);
     }
-    finally{
+    finally {
       setLoarding(false);
+    }
+  }
+
+  const createUserInfor = async (user: UserCredential) => {
+    try {
+      const defRef = await setDoc(doc(FIRESTORE_DB, `users/${user.user.uid}`), {
+        username: username,
+        email: user.user.email
+      });
+    }
+    catch (error) {
+      console.log(error);
     }
   }
 

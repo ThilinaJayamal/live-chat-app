@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, TextInput, Pressable, Image } from 'react-native'
 import React, { useState } from 'react'
-import { router } from 'expo-router';
+import { Redirect, router } from 'expo-router';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { FIREBASE_AUTH } from '../../config/firebaseConfig';
 
@@ -16,6 +16,11 @@ const login = () => {
       setLoarding(true);
       const user = await signInWithEmailAndPassword(FIREBASE_AUTH,email,password);
       console.log(user);
+      if(user){
+        return(
+           <Redirect href={"/(tabs)/groups"}/>
+        )
+      }
     }
     catch (error) {
       console.log("Can't login in" + error);

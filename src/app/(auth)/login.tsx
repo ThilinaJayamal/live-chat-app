@@ -4,26 +4,29 @@ import { Redirect, router } from 'expo-router';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { FIREBASE_AUTH } from '../../config/firebaseConfig';
 
+
 const login = () => {
 
   const [email, setEmail] = useState("ahjayalath1@gmail.com");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("12345678");
   const [loarding, setLoarding] = useState(false);
+  const [error, setError] = useState("");
 
   const handleLogin = async () => {
     try {
       setLoarding(true);
-      const user = await signInWithEmailAndPassword(FIREBASE_AUTH,email,password);
-      console.log(user);
-      if(user){
-        return(
-           <Redirect href={"/(tabs)/groups"}/>
+      const user = await signInWithEmailAndPassword(FIREBASE_AUTH, email, password);
+      if (user) {
+        return (
+          <Redirect href={"/(tabs)/groups"} />
         )
       }
     }
     catch (error) {
-      console.log("Can't login in" + error);
+      if (error.code === 'auth/invalid-credential') {
+        setError("*Please check your username or password again.*");
+      }
     }
     finally {
       setLoarding(false);
@@ -54,21 +57,14 @@ const login = () => {
             <Text style={styles.text}>Password</Text>
             <TextInput style={styles.input} placeholder='Password' value={password} onChangeText={setPassword}></TextInput>
           </View>
+
+          <Text style={{ textAlign: 'center', color: '#ef4444' }}>{error}</Text>
         </View>
 
-        {
-          loarding ?
-            (
-              <Pressable style={styles.loginBtn}>
-                <Text style={{ color: "white", textAlign: 'center', fontWeight: '600' }}>Loading...</Text>
-              </Pressable>
-            )
-            /*<ActivityIndicator/>*/
-            :
-            (<Pressable style={styles.loginBtn} onPress={() => handleLogin()}>
-              <Text style={{ color: "white", textAlign: 'center', fontWeight: '600' }}>Login</Text>
-            </Pressable>)
-        }
+        <Pressable style={styles.loginBtn} onPress={loarding ? () => { } : () => handleLogin()}>
+          <Text style={{ color: "white", textAlign: 'center', fontWeight: '600' }}>{loarding ? "Loading..." : "Login"}</Text>
+        </Pressable>
+        {/*<ActivityIndicator/>*/}
 
       </View>
 
@@ -111,7 +107,7 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: 'black',
     borderRadius: 8,
-    marginTop: 40
+    marginTop: 10,
   }
 });
 

@@ -9,7 +9,7 @@ const register = () => {
 
   const [email, setEmail] = useState("ahjayalath1@gmail.com");
   const [username, setUsername] = useState("thilina");
-  const [password, setPassword] = useState("12345678");
+  const [password, setPassword] = useState("123456789");
   const [loarding, setLoarding] = useState(false);
 
   const handleRegistration = async () => {

@@ -61,7 +61,7 @@ const Chat = () => {
             color: isMe ? '#4b5563' : '#f9fafb',
             fontSize: 11,
             textAlign: 'right'
-          }}>{item?.createdAt.toDate().toLocaleDateString()}</Text>
+          }}>{item?.createdAt?.toDate()?.toLocaleDateString()}</Text>
         </View>
 
       </View>

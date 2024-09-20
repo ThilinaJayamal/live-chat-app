@@ -9,7 +9,7 @@ This project is a mobile application developed using **React Native** and **Expo
 - **User Authentication**: Secure sign-in and sign-out functionality using Firebase Authentication.
 - **Real-time Messaging**: Chat functionality powered by Firebase Firestore, enabling real-time communication between users.
 - **Responsive UI**: A user-friendly interface designed with React Native components and styled for both iOS and Android platforms.
-- **Navigation**: Smooth navigation experience using React Navigation.
+- **Navigation**: Smooth navigation experience using expo router.
 
 ## Installation
 

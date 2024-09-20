@@ -52,6 +52,7 @@ This project is a mobile application developed using **React Native** and **Expo
 
 ## Screenshots
 
+<img src="https://github.com/user-attachments/assets/24c04b54-06f7-409c-bc73-4bdef083392f" alt="image description" width="300"/>
 ![WhatsApp Image 2024-09-20 at 22 00 40_59493a0f](https://github.com/user-attachments/assets/24c04b54-06f7-409c-bc73-4bdef083392f)
 ![WhatsApp Image 2024-09-20 at 22 00 41_59018a65](https://github.com/user-attachments/assets/6c9e3e94-a842-4277-bf86-0c25a90dca70)
 ![WhatsApp Image 2024-09-20 at 22 00 39_7793baaa](https://github.com/user-attachments/assets/ccffc34d-f2e8-4479-9d9d-4783f09c9620)

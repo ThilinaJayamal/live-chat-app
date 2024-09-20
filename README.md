@@ -53,7 +53,7 @@ This project is a mobile application developed using **React Native** and **Expo
 ## Screenshots
 
 <img src="https://github.com/user-attachments/assets/24c04b54-06f7-409c-bc73-4bdef083392f" alt="image description" width="200"/>
-<img src="hhttps://github.com/user-attachments/assets/6c9e3e94-a842-4277-bf86-0c25a90dca70" alt="image description" width="200"/>
+<img src="https://github.com/user-attachments/assets/6c9e3e94-a842-4277-bf86-0c25a90dca70" alt="image description" width="200"/>
 <img src="https://github.com/user-attachments/assets/ccffc34d-f2e8-4479-9d9d-4783f09c9620" alt="image description" width="200"/>
 <img src="https://github.com/user-attachments/assets/d7f5c28d-7a99-4dfe-a977-278cb5796131" alt="image description" width="200"/>
 
